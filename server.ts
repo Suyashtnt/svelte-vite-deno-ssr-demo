@@ -1,35 +1,47 @@
-import { Application, FlashServer, hasFlash } from "https://deno.land/x/oak@v11.1.0/mod.ts";
 import { renderPage } from "vite-plugin-ssr";
+import { contentType } from "https://deno.land/std@0.170.0/media_types/mod.ts"
+
 
 const root = Deno.cwd();
 
-const appOptions = hasFlash() ? { serverConstructor: FlashServer } : undefined;
-const app = new Application(appOptions);
-
-app.use( async (ctx, next ) => {
-    const pageCtxInit = {
-        urlOriginal: ctx.request.url.toString()
-    }
-
-    const pageCtx = await renderPage(pageCtxInit);
-    if (pageCtx.httpResponse === null) return await next()
-    const { body, statusCode, contentType } = pageCtx.httpResponse;
-
-
-    ctx.response.status = statusCode;
-    ctx.response.type = contentType;
-    ctx.response.body = body;
-})
-
-app.use(async (ctx, next) => {
-    const staticDir = `${root}/dist/client`;
-    try {
-        await ctx.send({ root: staticDir })
-    } catch {
-        await next();
-    }
-})
-
 const port = 3000;
-console.log(`Listening on http://localhost:${port}`);
-await app.listen({ port });
+Deno.serve(async (req) => {
+    const staticDir = `${root}/dist/client`;
+    const path = new URL(req.url).pathname;
+    const file = `${staticDir}${path}`;
+
+    try {
+        const stat = await Deno.stat(file);
+        if (stat.isDirectory) throw new Error("is directory");
+        const size = stat.size
+        const body = (await Deno.open(file)).readable;
+
+        console.log("serving", path);
+        const extension = path.split(".").pop();
+        if(!extension) throw new Error("no extension")
+
+        return new Response(body, {
+            headers: {
+                "Content-Length": size.toString(),
+                "Content-Type": contentType(extension) || "application/octet-stream"
+            }
+        })
+    } catch {
+        console.log("rendering", req.url)
+        const pageCtxInit = {
+            urlOriginal: req.url
+        }
+
+        const pageCtx = await renderPage(pageCtxInit);
+        if (pageCtx.httpResponse === null) return new Response("not found", { status: 404 });
+        const { body, statusCode, contentType } = pageCtx.httpResponse;
+
+        return new Response(body, {
+            status: statusCode,
+            headers: {
+                "Content-Type": contentType,
+            }
+        })
+
+    }
+}, { port })

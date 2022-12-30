@@ -5,7 +5,7 @@
     "serve": "deno run --allow-read --allow-net='127.0.0.1:3000,esm.sh' --allow-env='DEBUG,NO_COLOR,TERM,FORCE_COLOR' --unstable --node-modules-dir ./server.ts"
   },
   "compilerOptions": {
-    "lib": ["dom", "esnext", "deno.ns"]
+    "lib": ["dom", "esnext", "deno.ns", "deno.unstable"]
   },
   "importMap": "import_map.json"
 }
