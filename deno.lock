@@ -1,6 +1,8 @@
 {
   "version": "2",
   "remote": {
+    "https://cdn.skypack.dev/-/canvas-confetti@v1.6.0-t438JJTXIbBReqvLtDua/dist=es2019,mode=imports/optimized/canvas-confetti.js": "ba9494edaea9e3b156debbb6e02cb6acf15a9ad24ae702317118bab5da17f185",
+    "https://cdn.skypack.dev/canvas-confetti": "7d22546992e224d39147687fbb8de08d7c0ff238e793af4568f99ca7b16b9e79",
     "https://deno.land/std@0.152.0/_util/assert.ts": "e94f2eb37cebd7f199952e242c77654e43333c1ac4c5c700e929ea3aa5489f74",
     "https://deno.land/std@0.152.0/_util/os.ts": "3b4c6e27febd119d36a416d7a97bd3b0251b77c88942c8f16ee5953ea13e2e49",
     "https://deno.land/std@0.152.0/async/deferred.ts": "bc18e28108252c9f67dfca2bbc4587c3cbf3aeb6e155f8c864ca8ecff992b98a",

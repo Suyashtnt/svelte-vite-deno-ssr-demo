@@ -1,6 +1,37 @@
-import { escapeInject, dangerouslySkipEscape } from 'vite-plugin-ssr'
 import { PageContext } from "./types.ts"
 const base = import.meta.env.BASE_URL
+
+interface EscapedString {
+  _escaped: string
+}
+
+type TemplateVariable = string | EscapedString;
+
+type TemplateWrapped = {
+    _template: TemplateContent;
+};
+type TemplateContent = {
+    templateStrings: TemplateStrings;
+    templateVariables: TemplateVariable[];
+};
+
+function dangerouslySkipEscape(arg: unknown): EscapedString {
+  return { _escaped: arg as string }
+}
+
+type TemplateStrings = TemplateStringsArray;
+
+function escapeInject(
+  templateStrings: TemplateStrings,
+  ...templateVariables: (TemplateVariable)[]
+): TemplateWrapped {
+  return {
+    _template: {
+      templateStrings,
+      templateVariables: templateVariables as TemplateVariable[]
+    }
+  }
+}
 
 export { render }
 export { passToClient }

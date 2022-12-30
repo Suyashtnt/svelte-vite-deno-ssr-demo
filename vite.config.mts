@@ -21,7 +21,7 @@ export default defineConfig({
       },
     }),
     ssr({
-      prerender: true,
+      // prerender: true,
     }),
   ],
   server: {
