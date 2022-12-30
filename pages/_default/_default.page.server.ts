@@ -1,4 +1,3 @@
-/// <reference types="vite/client" />
 
 import { escapeInject, dangerouslySkipEscape } from 'vite-plugin-ssr'
 import { PageContext } from "./types.ts"

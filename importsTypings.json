@@ -1,6 +1,7 @@
 {
   "imports": {
     "vite-plugin-ssr": "npm:vite-plugin-ssr",
-    "vite": "npm:vite"
+    "vite": "npm:vite",
+    "vite/client": "npm:vite/client"
   }
 }
