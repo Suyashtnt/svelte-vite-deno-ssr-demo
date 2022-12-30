@@ -1,4 +1,3 @@
-
 import { escapeInject, dangerouslySkipEscape } from 'vite-plugin-ssr'
 import { PageContext } from "./types.ts"
 const base = import.meta.env.BASE_URL
