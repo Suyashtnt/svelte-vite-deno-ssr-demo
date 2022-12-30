@@ -1,6 +1,7 @@
 <script lang="ts">
     import Layout from '../../layouts/default.svelte'
-    import confetti from 'https://cdn.skypack.dev/canvas-confetti';
+    import confetti from 'https://esm.sh/canvas-confetti@1.6.0';
+
     function fireConfetti() {
         confetti({
             particleCount: 100,

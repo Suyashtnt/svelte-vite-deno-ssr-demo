@@ -1,8 +1,10 @@
-import { Application } from "https://deno.land/x/oak@v11.1.0/mod.ts";
+import { Application, FlashServer, hasFlash } from "https://deno.land/x/oak@v11.1.0/mod.ts";
 import { renderPage } from 'npm:vite-plugin-ssr';
 
 const root = Deno.cwd();
-const app = new Application();
+
+const appOptions = hasFlash() ? { serverConstructor: FlashServer } : undefined;
+const app = new Application(appOptions);
 
 app.use( async (ctx, next ) => {
     const pageCtxInit = {

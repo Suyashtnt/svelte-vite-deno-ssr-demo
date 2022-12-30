@@ -5,22 +5,30 @@
 </script>
 
 <Layout>
-    <h1>
-        Welcome to hell
+    <article>
+        <h1>
+            This title is styled
 
-        <span>test</span>
-    </h1>
-    <h2>Try updating pages/index.page.ts and see the HMR go brr</h2>
-    <a href="/about" class="contrast">Navigate to about page via CSR</a>
+            <span>with postcss</span>
+        </h1>
 
-    <p>look below for some interactive examples</p>
+        <p>The rest of the website uses pico.css</p>
+        <p>Try updating pages/index.page.ts and see the HMR go brr</p>
 
-    <button on:click={() => counter++}>
-        Clicked {counter} times
-    </button>
+        <a href="/about" class="contrast">Navigate to about page via CSR</a>
 
-    <input bind:value={name} />
-    <p>Hello, {name}!</p>
+        <p>look below for some interactive examples</p>
+
+        <button on:click={() => counter++}>
+            Clicked {counter} times
+        </button>
+
+        <label for="name">
+            Name:
+            <input bind:value={name} id="name" type="text" name="name" placeholder="Type your name here!" required />
+        </label>
+        <p>Hello, {name}!</p>
+    </article>
 </Layout>
 
 <style lang="postcss">
@@ -28,7 +36,7 @@
         color: red;
 
         span {
-            color: blue;
+            color: lightblue;
         }
     }
 </style>

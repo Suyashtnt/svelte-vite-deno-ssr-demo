@@ -2,6 +2,10 @@
   "imports": {
     "vite-plugin-ssr": "npm:vite-plugin-ssr",
     "vite": "npm:vite",
-    "vite/client": "npm:vite/client"
+    "vite/client": "npm:vite/client",
+    "postcss-nested": "npm:postcss-nested",
+    "svelte-preprocess": "npm:svelte-preprocess",
+    "svelte": "npm:svelte",
+    "cssnano": "npm:cssnano"
   }
 }

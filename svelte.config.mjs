@@ -1,4 +1,4 @@
-import preprocess from "npm:svelte-preprocess";
+import preprocess from "svelte-preprocess";
 
 export default {
   preprocess: preprocess({
