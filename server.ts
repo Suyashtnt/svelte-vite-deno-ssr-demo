@@ -31,4 +31,5 @@ app.use(async (ctx, next) => {
 })
 
 const port = 3000;
+console.log(`Listening on http://localhost:${port}`);
 await app.listen({ port });

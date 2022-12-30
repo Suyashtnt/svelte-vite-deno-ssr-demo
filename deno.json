@@ -1,8 +1,8 @@
 {
   "tasks": {
     "dev": "deno run -A --unstable --node-modules-dir npm:vite",
-    "build": "deno run -A --unstable --node-modules-dir npm:vite build && deno run -A ./bundleServer.ts",
-    "serve": "deno run -A --unstable --node-modules-dir ./server.ts"
+    "build": "deno run -A --unstable --node-modules-dir npm:vite build",
+    "serve": "deno run --allow-read --allow-net='127.0.0.1:3000,esm.sh' --allow-env='DEBUG,NO_COLOR,TERM,FORCE_COLOR' --unstable --node-modules-dir ./server.ts"
   },
   "compilerOptions": {
     "lib": ["dom", "esnext", "deno.ns"]
