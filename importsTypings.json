@@ -1,0 +1,6 @@
+{
+  "imports": {
+    "vite-plugin-ssr": "npm:vite-plugin-ssr",
+    "vite": "npm:vite"
+  }
+}
