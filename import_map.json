@@ -1,6 +1,7 @@
 {
   "imports": {
     "vite-plugin-ssr": "npm:vite-plugin-ssr",
+    "vite-plugin-ssr/server": "npm:vite-plugin-ssr/server",
     "vite": "npm:vite",
     "vite/client": "npm:vite/client",
     "postcss-nested": "npm:postcss-nested",

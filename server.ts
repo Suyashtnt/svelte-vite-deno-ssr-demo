@@ -1,5 +1,5 @@
 import { Application, FlashServer, hasFlash } from "https://deno.land/x/oak@v11.1.0/mod.ts";
-import { renderPage } from 'npm:vite-plugin-ssr';
+import { renderPage } from "vite-plugin-ssr";
 
 const root = Deno.cwd();
 
